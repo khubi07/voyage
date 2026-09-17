@@ -43,3 +43,14 @@ class TripContext(BaseModel):
     booking: BookingContext
     property: PropertyContext
     itinerary: list[ItineraryItemContext]
+
+class ChatRequest(BaseModel): #what our backend receives
+    trip_id: int
+    query: str
+
+
+class AgentResponse(BaseModel): #what agent returns:
+    message: str
+    recommendations: list = []
+    action: str | None = None
+    needs_confirmation: bool = False
