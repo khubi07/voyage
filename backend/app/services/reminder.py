@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from sqlalchemy.orm import Session
 
 from ..models import Trip
-
+from .notification import NotificationService
 
 def check_checkin_reminders(db: Session):
     """
@@ -13,7 +13,7 @@ def check_checkin_reminders(db: Session):
     """
 
     tomorrow = date.today() + timedelta(days=1)
-
+    notification_service = NotificationService()
     trips = (
         db.query(Trip)
         .filter(
@@ -33,4 +33,7 @@ def check_checkin_reminders(db: Session):
             f"{property_data.check_in_time.strftime('%I:%M %p')}."
         )
 
-        print(message)
+        notification_service.send(
+    recipient=guest.phone,
+    message=message,
+)
