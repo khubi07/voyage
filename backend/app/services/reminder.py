@@ -34,6 +34,6 @@ def check_checkin_reminders(db: Session):
         )
 
         notification_service.send(
-    recipient=guest.phone,
-    message=message,
-)
+            recipient=guest.phone,
+            message=message,
+        )
