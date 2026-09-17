@@ -6,7 +6,27 @@ from .services.context_manager import get_trip_context
 from .schemas import ChatRequest, AgentResponse
 from .services.agent_client import run_agent
 
-app = FastAPI(title="Wayzyy Trip Concierge")
+from contextlib import asynccontextmanager
+from .services.scheduler import start_scheduler, stop_scheduler
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Manage resources that should start and stop with the API."""
+
+    # Start background jobs when the application starts.
+    start_scheduler()
+
+    yield
+
+    # Stop background jobs gracefully when the application shuts down.
+    stop_scheduler()
+
+
+
+app = FastAPI(
+    title="Wayzyy Trip Concierge",
+    lifespan=lifespan,
+)
 
 
 def get_db():
@@ -55,3 +75,4 @@ def chat(
             status_code=404,
             detail="Trip not found",
         )
+
