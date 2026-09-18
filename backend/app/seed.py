@@ -106,3 +106,4 @@ trip2 = Trip(
 
 db.add(trip2)
 db.commit()
+
