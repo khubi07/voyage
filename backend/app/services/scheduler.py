@@ -2,7 +2,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 from ..database import SessionLocal
 from .reminder import check_checkin_reminders
-
+from .weather_job import run_weather_job
 
 # Create one scheduler instance for the application.
 scheduler = BackgroundScheduler()
@@ -30,6 +30,14 @@ def start_scheduler():
         trigger="interval",
         minutes=1,
         id="checkin_reminder",
+        replace_existing=True,
+    )
+
+    scheduler.add_job(
+        run_weather_job,
+        trigger="interval",
+        minutes=1,
+        id="weather_proactive_check",
         replace_existing=True,
     )
 
