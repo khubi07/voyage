@@ -1,0 +1,67 @@
+[
+  {
+    "id": "area_001",
+    "name": "Candolim",
+    "category": "area",
+    "area": "Candolim",
+    "tags": ["quiet", "upscale", "family-friendly"],
+    "price": "medium",
+    "description": "A relatively calm North Goa beach town, quieter than nearby Baga/Calangute, with a long beach strip.",
+    "hours": "n/a",
+    "latitude": 15.5185,
+    "longitude": 73.7645,
+    "source": "curated"
+  },
+  {
+    "id": "area_002",
+    "name": "Baga",
+    "category": "area",
+    "area": "Baga",
+    "tags": ["lively", "nightlife", "beach", "shopping"],
+    "price": "medium",
+    "description": "One of the busiest beach areas in North Goa, known for nightlife, shacks and water sports.",
+    "hours": "n/a",
+    "latitude": 15.5555,
+    "longitude": 73.7515,
+    "source": "curated"
+  },
+  {
+    "id": "area_003",
+    "name": "Anjuna",
+    "category": "area",
+    "area": "Anjuna",
+    "tags": ["trendy", "bohemian", "nightlife", "market"],
+    "price": "medium",
+    "description": "Known for its flea market, cliffside shacks and a laid-back bohemian crowd.",
+    "hours": "n/a",
+    "latitude": 15.5745,
+    "longitude": 73.7405,
+    "source": "curated"
+  },
+  {
+    "id": "area_004",
+    "name": "Panaji",
+    "category": "area",
+    "area": "Panaji",
+    "tags": ["cultural", "heritage", "quiet-evenings", "capital"],
+    "price": "medium",
+    "description": "Goa's capital city, home to heritage architecture, the Mandovi riverfront and museums.",
+    "hours": "n/a",
+    "latitude": 15.4985,
+    "longitude": 73.8285,
+    "source": "curated"
+  },
+  {
+    "id": "area_005",
+    "name": "Calangute",
+    "category": "area",
+    "area": "Calangute",
+    "tags": ["busy", "tourist-hub", "beach", "shopping"],
+    "price": "medium",
+    "description": "The largest beach town in North Goa, very tourist-heavy with dense shacks and shops.",
+    "hours": "n/a",
+    "latitude": 15.5435,
+    "longitude": 73.7550,
+    "source": "curated"
+  }
+]

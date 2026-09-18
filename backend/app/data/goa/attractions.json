@@ -1,0 +1,80 @@
+[
+  {
+    "id": "attr_001",
+    "name": "Basilica of Bom Jesus",
+    "category": "attraction",
+    "area": "Old Goa",
+    "tags": ["cultural", "heritage", "indoor", "quiet"],
+    "price": "free",
+    "description": "UNESCO World Heritage church holding the relics of St. Francis Xavier, a key historic landmark.",
+    "hours": "09:00-18:30",
+    "latitude": 15.5010,
+    "longitude": 73.9120,
+    "source": "curated"
+  },
+  {
+    "id": "attr_002",
+    "name": "Fort Aguada",
+    "category": "attraction",
+    "area": "Candolim",
+    "tags": ["scenic", "outdoor", "historic", "family"],
+    "price": "low",
+    "description": "17th-century Portuguese fort with a lighthouse and views over the Arabian Sea, close to Candolim.",
+    "hours": "09:30-18:00",
+    "latitude": 15.4925,
+    "longitude": 73.7735,
+    "source": "curated"
+  },
+  {
+    "id": "attr_003",
+    "name": "Se Cathedral",
+    "category": "attraction",
+    "area": "Old Goa",
+    "tags": ["cultural", "heritage", "indoor", "quiet"],
+    "price": "free",
+    "description": "One of the largest churches in Asia, notable for its Portuguese-Gothic architecture.",
+    "hours": "09:00-18:00",
+    "latitude": 15.5020,
+    "longitude": 73.9115,
+    "source": "curated"
+  },
+  {
+    "id": "attr_004",
+    "name": "Dudhsagar Waterfalls",
+    "category": "attraction",
+    "area": "Mollem",
+    "tags": ["adventurous", "outdoor", "scenic", "full-day"],
+    "price": "medium",
+    "description": "A four-tiered waterfall inside Bhagwan Mahaveer Sanctuary, usually visited via jeep safari.",
+    "hours": "08:00-17:00",
+    "latitude": 15.3140,
+    "longitude": 74.3140,
+    "source": "curated"
+  },
+  {
+    "id": "attr_005",
+    "name": "Goa State Museum",
+    "category": "attraction",
+    "area": "Panaji",
+    "tags": ["quiet", "indoor", "cultural", "rainy-day"],
+    "price": "low",
+    "description": "Exhibits on Goan history, art and Portuguese-era artefacts, a good indoor option in bad weather.",
+    "hours": "09:30-17:15 (closed Sundays)",
+    "latitude": 15.4915,
+    "longitude": 73.8285,
+    "source": "curated"
+  },
+  {
+    "id": "attr_006",
+    "name": "Chorla Ghats Viewpoint",
+    "category": "attraction",
+    "area": "Chorla",
+    "tags": ["scenic", "outdoor", "quiet", "nature"],
+    "price": "free",
+    "description": "Misty viewpoint on the Western Ghats border, popular for photography and quiet nature time.",
+    "hours": "Open 24 hours, best before noon",
+    "latitude": 15.6015,
+    "longitude": 74.1075,
+    "source": "curated"
+  }
+]
