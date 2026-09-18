@@ -1,0 +1,54 @@
+[
+  {
+    "id": "trans_001",
+    "name": "Goa Scooter/Bike Rental",
+    "category": "transport",
+    "area": "Candolim",
+    "tags": ["flexible", "budget", "self-drive"],
+    "price": "low",
+    "description": "Widely available scooter and bike rentals, the most common way tourists get around Goa.",
+    "hours": "24 hours (pickup/drop by arrangement)",
+    "latitude": 15.5175,
+    "longitude": 73.7645,
+    "source": "curated"
+  },
+  {
+    "id": "trans_002",
+    "name": "GTDC Local Bus Service",
+    "category": "transport",
+    "area": "Statewide",
+    "tags": ["budget", "shared"],
+    "price": "low",
+    "description": "State-run bus network connecting most towns and beach areas, inexpensive but less frequent.",
+    "hours": "06:00-21:00",
+    "latitude": 15.4985,
+    "longitude": 73.8285,
+    "source": "curated"
+  },
+  {
+    "id": "trans_003",
+    "name": "Goa Miles App Taxi",
+    "category": "transport",
+    "area": "Statewide",
+    "tags": ["on-demand", "app-based", "night-friendly"],
+    "price": "medium",
+    "description": "Local app-based taxi service, a reliable option for late-night or longer point-to-point trips.",
+    "hours": "24 hours",
+    "latitude": 15.4985,
+    "longitude": 73.8285,
+    "source": "curated"
+  },
+  {
+    "id": "trans_004",
+    "name": "River Ferry, Old Goa",
+    "category": "transport",
+    "area": "Old Goa",
+    "tags": ["scenic", "budget", "short-ride"],
+    "price": "low",
+    "description": "Small ferry crossings across the Mandovi, a scenic and cheap way to cross between river banks.",
+    "hours": "07:00-19:00",
+    "latitude": 15.5010,
+    "longitude": 73.9110,
+    "source": "curated"
+  }
+]
