@@ -67,7 +67,7 @@ export function Home() {
           variants={heroContainer}
           initial="hidden"
           animate="show"
-          className="relative mx-auto flex min-h-[86vh] max-w-4xl flex-col justify-end px-6 pb-16 pt-40 sm:px-8 sm:pb-24"
+          className="relative mx-auto flex min-h-[calc(100dvh-86px)] max-w-4xl flex-col justify-end px-6 pb-16 pt-40 sm:px-8 sm:pb-24"
         >
           <motion.p variants={heroItem} className="mb-4 text-xs tracking-[0.2em] text-ivory/60">
             THE INTELLIGENT TRIP CONCIERGE
