@@ -2,12 +2,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { sendChatMessage } from '@/api/client'
-import type { ChatMessage } from '@/types/trip'
+import type { ChatMessage, TripContext } from '@/types/trip'
 import { CompassMark } from '@/components/brand/CompassMark'
 import { LoadingState } from '@/components/ui/LoadingState'
 import { RecommendationCard } from '@/components/place/RecommendationCard'
 import { WeatherAlert } from '@/components/trip/WeatherAlert'
-import { mockTripContext, proactiveRainAlternatives } from '@/data/mock'
 
 const THINKING_MESSAGES = [
   'Reading your trip\u2026',
@@ -24,11 +23,17 @@ const SUGGESTED_PROMPTS = [
 
 interface ConciergeChatProps {
   tripId: number
+  trip: TripContext
   initialMessages?: ChatMessage[]
   initialQuery?: string | null
 }
 
-export function ConciergeChat({ tripId, initialMessages = [], initialQuery }: ConciergeChatProps) {
+export function ConciergeChat({
+  tripId,
+  trip,
+  initialMessages = [],
+  initialQuery,
+}: ConciergeChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
   const [input, setInput] = useState('')
   const [thinking, setThinking] = useState(false)
@@ -59,25 +64,6 @@ export function ConciergeChat({ tripId, initialMessages = [], initialQuery }: Co
     setInput('')
     setThinking(true)
 
-    // Special-cased demo path for the signature proactive moment.
-    if (query.toLowerCase().includes('rain')) {
-      const response = await sendChatMessage(tripId, query)
-      setThinking(false)
-      setMessages((m) => [
-        ...m,
-        {
-          id: crypto.randomUUID(),
-          role: 'voyage',
-          text: response.message,
-          recommendations: response.recommendations,
-          action: response.action,
-          needsConfirmation: response.needs_confirmation,
-          timestamp: Date.now(),
-        },
-      ])
-      return
-    }
-
     const response = await sendChatMessage(tripId, query)
     setThinking(false)
     setMessages((m) => [
@@ -94,7 +80,9 @@ export function ConciergeChat({ tripId, initialMessages = [], initialQuery }: Co
     ])
   }
 
-  const affectedItem = mockTripContext.itinerary.find((i) => i.title === 'Calangute Beach')
+  const affectedItem = trip.itinerary.find(
+  (i) => i.title === 'Calangute Beach'
+)
 
   return (
     <div className="flex h-full flex-col">
@@ -135,7 +123,7 @@ export function ConciergeChat({ tripId, initialMessages = [], initialQuery }: Co
                     <div className="mt-4">
                       <WeatherAlert
                         affectedItem={affectedItem}
-                        alternatives={msg.recommendations ?? proactiveRainAlternatives}
+                        alternatives={msg.recommendations ?? []}
                         message={msg.text}
                       />
                     </div>

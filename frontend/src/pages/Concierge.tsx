@@ -66,6 +66,7 @@ export function Concierge() {
       <div className="mt-6 min-h-0 flex-1">
         <ConciergeChat
           tripId={trip.trip_id}
+          trip={trip}
           initialQuery={pendingQuery}
           key={pendingQuery ?? 'default'}
         />
