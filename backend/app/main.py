@@ -9,6 +9,8 @@ from .services.agent_client import run_agent
 from contextlib import asynccontextmanager
 from .services.scheduler import start_scheduler, stop_scheduler
 
+from fastapi.middleware.cors import CORSMiddleware
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage resources that should start and stop with the API."""
@@ -26,6 +28,14 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Wayzyy Trip Concierge",
     lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 

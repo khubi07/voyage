@@ -8,7 +8,7 @@ import { mockTripContext, homeRecommendations, proactiveRainAlternatives } from 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string | undefined
 const USE_MOCK = !API_BASE_URL
 
-function delay<T>(value: T, ms = 700): Promise<T> {
+function delay<T>(value: T, ms = 700) : Promise<T> {
   return new Promise((resolve) => setTimeout(() => resolve(value), ms))
 }
 
