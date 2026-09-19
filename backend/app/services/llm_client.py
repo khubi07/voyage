@@ -14,8 +14,11 @@ network call.
 """
 
 from __future__ import annotations
-
+import anthropic
+from dotenv import load_dotenv
 import os
+load_dotenv()
+
 
 try:
     from google import genai

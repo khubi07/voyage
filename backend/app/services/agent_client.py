@@ -1,21 +1,13 @@
+from .agent import run_agent as ai_run_agent
 from ..schemas import AgentResponse, TripContext
 
 
-def run_agent(query: str, trip_context: TripContext) -> AgentResponse:
-    """
-    Temporary mock for AI Agent.
-
-    This keeps our backend integration working while the actual
-    AI agent is developed independently.
-    """
-
-    # We use the trip location to verify that the backend
-    # is successfully passing TripContext to the agent layer.
-    location = trip_context.property.location
-
-    return AgentResponse(
-        message=f"Mock response for your trip in {location}: {query}",
-        recommendations=[],
-        action=None,
-        needs_confirmation=False,
+def run_agent(
+    query: str,
+    trip_context: TripContext,
+) -> AgentResponse:
+    """Bridge the backend service layer with the AI agent."""
+    return ai_run_agent(
+        query=query,
+        trip_context=trip_context,
     )
