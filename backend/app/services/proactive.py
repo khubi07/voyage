@@ -77,7 +77,7 @@ def handle_proactive_event(
 
         retrieval = retriever.search(
             query_text,
-            top_k=2,
+            top_k=5,
             filters={
                 "area": area,
                 "tag": alt_tag,
