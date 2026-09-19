@@ -257,7 +257,8 @@ def run_agent(query: str, trip_context: TripContext) -> AgentResponse:
         # anchors the location/area filter.
         return _build_ask_response(query, trip_context, retriever)
 
-    except Exception:
+    except Exception as e:
+        
         return AgentResponse(
             message=(
                 "Sorry, I ran into an issue finding that for you -- "

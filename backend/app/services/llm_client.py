@@ -14,7 +14,7 @@ network call.
 """
 
 from __future__ import annotations
-import anthropic
+
 from dotenv import load_dotenv
 import os
 load_dotenv()
@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover
 
 
 # Configurable through environment variables.
-MODEL = os.environ.get("VOYAGE_LLM_MODEL", "gemini-2.5-flash")
+MODEL = os.environ.get("VOYAGE_LLM_MODEL", "gemini-3.6-flash")
 
 
 def _has_live_client() -> bool:
@@ -37,7 +37,7 @@ def _has_live_client() -> bool:
 def generate_message(
     system_prompt: str,
     user_prompt: str,
-    max_tokens: int = 400,
+    max_tokens: int = 800,
 ) -> str:
     """
     Generate a natural-language message using Gemini.
@@ -47,16 +47,17 @@ def generate_message(
     """
 
     if _has_live_client():
+        
         try:
             client = genai.Client()
 
             prompt = f"""
-SYSTEM INSTRUCTIONS:
-{system_prompt}
+    SYSTEM INSTRUCTIONS:
+    {system_prompt}
 
-USER REQUEST:
-{user_prompt}
-"""
+    USER REQUEST:
+    {user_prompt}
+    """
 
             response = client.models.generate_content(
                 model=MODEL,
@@ -66,13 +67,14 @@ USER REQUEST:
                 },
             )
 
+            
+
             if response.text:
+                
                 return response.text.strip()
-
-        except Exception:
-            # API/auth/network errors should never break the agent.
-            pass
-
+            
+        except Exception as e:
+           pass
     return _fallback_message(user_prompt)
 
 
