@@ -8,6 +8,7 @@ from .services.agent_client import run_agent
 
 from contextlib import asynccontextmanager
 from .services.scheduler import start_scheduler, stop_scheduler
+from .services.notification_state import get_notifications
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -86,3 +87,6 @@ def chat(
             detail="Trip not found",
         )
 
+@app.get("/trips/{trip_id}/notifications")
+def get_trip_notifications(trip_id: int):
+    return get_notifications(trip_id)

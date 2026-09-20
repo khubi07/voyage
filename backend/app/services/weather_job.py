@@ -9,8 +9,11 @@ from .itinerary_event import find_weather_affected_items
 from .notification import NotificationService
 from .proactive import handle_proactive_event
 from .weather import get_weather
-from .notification_state import has_been_notified, mark_as_notified
-
+from .notification_state import (
+    add_notification,
+    has_been_notified,
+    mark_as_notified,
+)
 def run_weather_job():
     """Check upcoming trips and proactively handle weather events."""
     db = SessionLocal()
@@ -117,6 +120,13 @@ def run_weather_job():
                     recipient=trip.guest.phone,
                     message=response.message,
                 )
+
+                add_notification(
+                    trip_id=cast(int, trip.id),
+                    message=response.message,
+                )
+
+                mark_as_notified(event_key)
 
                 mark_as_notified(event_key)
                 print(f"[WEATHER JOB] Notification marked as sent: {event_key}")
