@@ -15,6 +15,15 @@ export function RecommendationCard({ place, index = 0, onOpen }: RecommendationC
   const [added, setAdded] = useState(false)
   const { show } = useToast()
 
+const image =
+  place.name === 'Chapora Fort Sunset Walk'
+    ? '/images/chapora-fort-goa-3.jpg'
+    : place.name === 'Spice Plantation Tour'
+      ? 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=80'
+      : place.name === 'Baga Beach Water Sports'
+        ? 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80'
+        : place.image
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -27,9 +36,9 @@ export function RecommendationCard({ place, index = 0, onOpen }: RecommendationC
         className="block w-full overflow-hidden rounded-2xl bg-midnight/5 text-left"
       >
         <div className="relative h-40 overflow-hidden sm:h-44">
-          {place.image && (
-            <motion.img
-              src={place.image}
+          {image && (
+  <motion.img
+    src={image}
               alt={place.name}
               className="h-full w-full object-cover"
               whileHover={{ scale: 1.06 }}
