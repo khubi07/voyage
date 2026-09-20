@@ -2,7 +2,7 @@ from datetime import date
 from typing import cast
 
 from ..database import SessionLocal
-from ..models import Trip
+from ..models import ItineraryItem, Trip
 from .context_manager import get_trip_context
 from .event_detector import detect_weather_event
 from .itinerary_event import find_weather_affected_items
@@ -39,6 +39,8 @@ def run_weather_job():
             )
 
             event = detect_weather_event(weather)
+            if not event:
+                continue
             event_key = f"{trip.id}_{event}_{date.today()}"
             print(f"[WEATHER JOB] Event detected: {event}")
             if not event:
@@ -48,11 +50,25 @@ def run_weather_job():
                 print(f"[WEATHER JOB] Already notified: {event_key}")
                 continue
 
+            upcoming_item = (
+                db.query(ItineraryItem)
+                .filter(
+                    ItineraryItem.trip_id == trip.id,
+                    ItineraryItem.date >= date.today(),
+                    ItineraryItem.status == "ACTIVE",
+                )
+                .order_by(ItineraryItem.date.asc())
+                .first()
+            )
+
+            if not upcoming_item:
+                continue
+
             affected_items = find_weather_affected_items(
                 db=db,
                 trip_id=cast(int, trip.id),
                 event=event,
-                target_date=date.today(),
+                target_date=cast(date, upcoming_item.date),
             )
             print(
                 f"[WEATHER JOB] Affected items: "
