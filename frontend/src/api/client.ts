@@ -80,3 +80,19 @@ export async function sendChatMessage(
   if (!res.ok) throw new Error(`Chat request failed: ${res.status}`)
   return res.json()
 }
+
+export async function getNotifications(tripId: number) {
+  if (USE_MOCK) {
+    return []
+  }
+
+  const res = await fetch(
+    `${API_BASE_URL}/trips/${tripId}/notifications`
+  )
+
+  if (!res.ok) {
+    throw new Error(`Failed to load notifications: ${res.status}`)
+  }
+
+  return res.json()
+}

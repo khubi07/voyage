@@ -6,6 +6,8 @@ import type { TripContext } from '@/types/trip'
 import { TripContextStrip } from '@/components/trip/TripContextStrip'
 import { ConciergeChat } from '@/components/concierge/ConciergeChat'
 
+import { getNotifications } from '@/api/client'
+
 const TRIP_ID = 2
 
 export function Concierge() {
@@ -13,6 +15,9 @@ export function Concierge() {
   const [pendingQuery, setPendingQuery] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [notifications, setNotifications] = useState<
+    { message: string; read: boolean }[]
+  >([])
 
   useEffect(() => {
     async function loadTrip() {
@@ -31,6 +36,26 @@ export function Concierge() {
 
     loadTrip()
   }, [])
+
+  useEffect(() => {
+    if (!trip) return
+    const tripId = trip.trip_id
+
+    async function loadNotifications() {
+      try {
+        const data = await getNotifications(tripId)
+        setNotifications(data)
+      } catch (err) {
+        console.error('Failed to load notifications:', err)
+      }
+    }
+
+    loadNotifications()
+
+    const interval = setInterval(loadNotifications, 10000)
+
+    return () => clearInterval(interval)
+  }, [trip])
 
   useEffect(() => {
     const q = sessionStorage.getItem('voyage:pending-query')
@@ -62,6 +87,18 @@ export function Concierge() {
 
         <TripContextStrip trip={trip} className="mt-3" />
       </div>
+
+      {notifications.length > 0 && (
+        <div className="mb-4 rounded-2xl border border-midnight/10 bg-white/80 p-4 shadow-sm">
+          <p className="text-xs font-medium uppercase tracking-wider text-midnight/45">
+            Trip update
+          </p>
+
+          <p className="mt-1 text-sm text-midnight">
+            🌧️ {notifications[notifications.length - 1].message}
+          </p>
+        </div>
+      )}
 
       <div className="mt-6 min-h-0 flex-1">
         <ConciergeChat
