@@ -8,7 +8,7 @@ import { ConciergeChat } from '@/components/concierge/ConciergeChat'
 
 import { getNotifications } from '@/api/client'
 
-const TRIP_ID = 1
+const TRIP_ID = 2
 
 export function Concierge() {
   const [trip, setTrip] = useState<TripContext | null>(null)
